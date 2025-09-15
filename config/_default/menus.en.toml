@@ -68,6 +68,14 @@
 #   pageRef = "categories"
 #   weight = 20
 
+
+#
+#[[main]]
+#  name = "Topics"
+# pageRef = "topics"
+#  weight = 20
+
+
 # config/_default/menus.toml
 
 [[main]]
@@ -76,22 +84,11 @@
   weight = 10
 
 [[main]]
-  name = "Topics"
-  pageRef = "topics"
-  weight = 20
-
-[[main]]
   pre = "github"
   name = "GitHub"
-  url = "https://github.com/nunocoracao/blowfish"
+  url = "https://github.com/snxjzaioxk"
   weight = 30
 
-[[main]]
-  identifier = "github2"
-  pre = "github"
-  url = "https://github.com/nunocoracao/blowfish"
-  weight = 40
-
 [[footer]]
-  name = "Privacy"
-  url = "https://external-link"
+  name = "影视站点"
+  url = "https://aliom.dpdns.org"
