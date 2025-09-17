@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>建站 on Aliom</title>
+    <link>http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/</link>
+    <description>Recent content in 建站 on Aliom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2025</copyright>
+    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>免费影视网站搭建教程 - MoonTV 开源项目</title>
+      <link>http://localhost:1313/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>个人网站搭建教程 - Jekyll部署到GitHub Pages</title>
+      <link>http://localhost:1313/posts/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

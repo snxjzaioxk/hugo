@@ -6,8 +6,38 @@
     <description>Recent content in Posts on Aliom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>© 2024 Aliom. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2025</copyright>
+    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>免费影视网站搭建教程 - MoonTV 开源项目</title>
+      <link>http://localhost:1313/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Git 的核心概念</title>
+      <link>http://localhost:1313/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Tue, 17 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>个人网站搭建教程 - Jekyll部署到GitHub Pages</title>
+      <link>http://localhost:1313/posts/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+      
+    </item>
     
     <item>
       <title>My First Post</title>
@@ -21,10 +51,10 @@
     
     <item>
       <title>这是一篇文章的标题</title>
-      <link>http://localhost:1313/posts/love/</link>
+      <link>http://localhost:1313/posts/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/love/</guid>
+      <guid>http://localhost:1313/posts/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
       
     </item>

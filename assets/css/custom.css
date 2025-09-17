@@ -41,20 +41,20 @@ body {
   min-height: 100vh;
 }
 
-/* 导航栏样式 */
+/* 导航栏样式 - 去掉阴影效果 */
 header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.1);
+  box-shadow: none !important;
+  border-bottom: none !important;
   transition: all 0.3s ease;
 }
 
 [data-theme="dark"] header,
 .dark header {
   background: rgba(15, 23, 42, 0.95);
-  border-bottom: 1px solid rgba(96, 165, 250, 0.2);
-  box-shadow: 0 1px 3px rgba(96, 165, 250, 0.1);
+  box-shadow: none !important;
+  border-bottom: none !important;
 }
 
 /* 主内容区域 */
@@ -279,4 +279,77 @@ code {
   .grid {
     gap: 1rem;
   }
+}
+
+/* 额外确保去掉所有可能的导航栏阴影 */
+.fixed-header,
+.sticky-header,
+header.fixed,
+header.sticky,
+.header-fixed,
+.navbar-fixed,
+.scrolled header,
+header.scrolled,
+.header-scrolled,
+nav,
+.nav,
+.navbar,
+#header,
+.site-header,
+.main-header,
+.top-header {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* 通用覆盖所有header相关元素 */
+header,
+header *,
+nav,
+nav *,
+.navbar,
+.navbar * {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+/* 特殊处理可能的Tailwind CSS阴影类 */
+header .shadow,
+header .shadow-sm,
+header .shadow-md,
+header .shadow-lg,
+header .shadow-xl,
+header .shadow-2xl,
+header .shadow-inner,
+header .drop-shadow,
+header .drop-shadow-sm,
+header .drop-shadow-md,
+header .drop-shadow-lg,
+header .drop-shadow-xl,
+header .drop-shadow-2xl,
+nav .shadow,
+nav .shadow-sm,
+nav .shadow-md,
+nav .shadow-lg,
+nav .shadow-xl,
+nav .shadow-2xl {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* 去掉底部边框（如果不需要的话） */
+header {
+  border-bottom: none !important;
+}
+
+[data-theme="dark"] header,
+.dark header {
+  border-bottom: none !important;
 }

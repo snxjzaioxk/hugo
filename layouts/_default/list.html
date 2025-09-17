@@ -1,0 +1,121 @@
+{{ define "main" }}
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-2">{{ .Title }}</h1>
+      <p class="text-gray-600 dark:text-gray-400">共 {{ len .Pages }} 篇文章</p>
+    </header>
+
+    {{ if .Content }}
+      <div class="prose dark:prose-invert mb-8">
+        {{ .Content }}
+      </div>
+    {{ end }}
+
+    {{ if .Pages }}
+      <section class="articles-list">
+        {{ $groupByYear := .Params.groupByYear | default (site.Params.list.groupByYear | default true) }}
+
+        {{ if $groupByYear }}
+          {{ range .Pages.GroupByDate "2006" }}
+            <div class="year-group mb-10">
+              <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">
+                {{ .Key }}年
+              </h2>
+              <div class="space-y-4">
+                {{ range .Pages }}
+                  <article class="article-item bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-start justify-between">
+                      <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-2">
+                          <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
+                            {{ .Title }}
+                          </a>
+                        </h3>
+                        {{ if .Summary }}
+                          <p class="text-gray-600 dark:text-gray-400 mb-3">
+                            {{ .Summary | truncate 150 }}
+                          </p>
+                        {{ end }}
+                        <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                          <time datetime="{{ .Date.Format "2006-01-02" }}">
+                            {{ .Date.Format "1月2日" }}
+                          </time>
+                          <span>阅读时间: {{ .ReadingTime }}分钟</span>
+                          {{ with .Params.tags }}
+                            <div class="flex space-x-2">
+                              {{ range first 3 . }}
+                                <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
+                                  {{ . }}
+                                </span>
+                              {{ end }}
+                            </div>
+                          {{ end }}
+                        </div>
+                      </div>
+                      {{ if le (.Params.weight | default 999) 10 }}
+                        <div class="ml-4 flex-shrink-0">
+                          <span class="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                            置顶
+                          </span>
+                        </div>
+                      {{ end }}
+                    </div>
+                  </article>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        {{ else }}
+          <div class="space-y-4">
+            {{ range .Pages }}
+              <article class="article-item bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-xl font-semibold mb-2">
+                      <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
+                        {{ .Title }}
+                      </a>
+                    </h3>
+                    {{ if .Summary }}
+                      <p class="text-gray-600 dark:text-gray-400 mb-3">
+                        {{ .Summary | truncate 150 }}
+                      </p>
+                    {{ end }}
+                    <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                      <time datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "2006年1月2日" }}
+                      </time>
+                      <span>阅读时间: {{ .ReadingTime }}分钟</span>
+                      {{ with .Params.tags }}
+                        <div class="flex space-x-2">
+                          {{ range first 3 . }}
+                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
+                              {{ . }}
+                            </span>
+                          {{ end }}
+                        </div>
+                      {{ end }}
+                    </div>
+                  </div>
+                  {{ if le (.Params.weight | default 999) 10 }}
+                    <div class="ml-4 flex-shrink-0">
+                      <span class="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                        置顶
+                      </span>
+                    </div>
+                  {{ end }}
+                </div>
+              </article>
+            {{ end }}
+          </div>
+        {{ end }}
+      </section>
+    {{ else }}
+      <div class="text-center py-12">
+        <p class="text-gray-500 dark:text-gray-400 text-lg">
+          还没有发布任何文章，敬请期待！
+        </p>
+      </div>
+    {{ end }}
+  </div>
+{{ end }}

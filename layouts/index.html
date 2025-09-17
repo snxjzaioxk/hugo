@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ $pages := .Site.RegularPages }}
+  {{ $pages := .Site.RegularPages.ByDate.Reverse }}
   {{ $pinned := where $pages "Params.weight" "le" 10 }}
   {{ $allPosts := $pages }}
   {{ $recent := first 3 $allPosts }}
