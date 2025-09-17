@@ -2,8 +2,7 @@
 date = '2025-09-13'
 draft = "false"
 title = 'My First Post'
-weight = 1
-pinned = ["置顶"]
+weight = 100
 tags = ["欢迎", "开始"]
 +++
 
