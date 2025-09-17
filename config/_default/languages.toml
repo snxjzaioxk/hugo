@@ -1,12 +1,13 @@
+[zh-cn]
 disabled = false
-languageCode = "en"
-languageName = "English"
+languageCode = "zh-cn"
+languageName = "中文"
 weight = 1
 title = "Aliom"
 
-[params]
-  displayName = "English"
-  isoCode = "en"
+[zh-cn.params]
+  displayName = "中文"
+  isoCode = "zh-cn"
   rtl = false
   #dateFormat = "2 January 2006"
   logo = "logo.png"
@@ -14,7 +15,7 @@ title = "Aliom"
   # description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
-[params.author]
+[zh-cn.params.author]
    name = "Aliom"
 #   email = "mailto:3442803364@qq.com"
     image = "author_image.png"
