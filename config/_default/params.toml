@@ -1,9 +1,9 @@
-colorScheme = "Noir"
+colorScheme = "Blowfish"
 defaultAppearance = "light"
 autoSwitchAppearance = true
 enableA11y = false
 enableSearch = true
-enableCodeCopy = false
+enableCodeCopy = true
 replyByEmail = false
 disableImageOptimization = false
 disableImageOptimizationMD = false
@@ -31,10 +31,10 @@ showAppearanceSwitcher = true
 showScrollToTop = true
 
 [homepage]
-layout = "profile"
-showRecent = false
-showRecentItems = 5
-showMoreLink = false
+layout = "page"
+showRecent = true
+showRecentItems = 3
+showMoreLink = true
 showMoreLinkDest = "/posts/"
 cardView = false
 cardViewScreenWidth = false
@@ -60,8 +60,8 @@ showHeadingAnchors = true
 showPagination = true
 invertPagination = false
 showReadingTime = true
-showTableOfContents = false
-showTaxonomies = false
+showTableOfContents = true
+showTaxonomies = true
 showCategoryOnly = false
 showAuthorsBadges = false
 showWordCount = true

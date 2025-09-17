@@ -12,16 +12,16 @@ title = "Aliom"
   #dateFormat = "2 January 2006"
   logo = "logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+  description = "欢迎来到我的蓝色梦境博客"
+  copyright = "© 2024 Aliom. All rights reserved."
 
 [zh-cn.params.author]
    name = "Aliom"
 #   email = "mailto:3442803364@qq.com"
     image = "author_image.png"
 #   imageQuality = 96
-#   headline = "I'm only human"
-#   bio = "一个小博客"
+   headline = "探索技术的蓝色海洋"
+   bio = "记录学习与思考的点点滴滴"
    links = [
 #     { email = "mailto:3442803364@qq.com" },
 #     { link = "https://link-to-some-website.com/" },

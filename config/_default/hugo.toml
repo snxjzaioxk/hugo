@@ -28,6 +28,7 @@ enableEmoji = true
   category = "categories"
   author = "authors"
   series = "series"
+  pinned = "pinned"
 
 [sitemap]
   changefreq = 'daily'

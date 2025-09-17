@@ -1,0 +1,116 @@
+{{ define "main" }}
+  {{ $pages := .Site.RegularPages }}
+  {{ $pinned := where $pages "Params.weight" "le" 10 }}
+  {{ $allPosts := $pages }}
+  {{ $recent := first 3 $allPosts }}
+
+  <!-- 如果有置顶文章，从最近文章中排除置顶文章 -->
+  {{ if $pinned }}
+    {{ $recent = first 3 (where $allPosts "Params.weight" ">" 10) }}
+    {{ if not $recent }}
+      {{ $recent = first 3 (where $allPosts "Params.weight" nil) }}
+    {{ end }}
+  {{ end }}
+
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    {{ if $pinned }}
+    <section class="pinned-section mb-12">
+      <h2 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center">
+        📌 置顶文章
+      </h2>
+      <div class="grid gap-6">
+        {{ range $pinned }}
+          <article class="pinned-card bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900 rounded-xl p-6 border-l-4 border-blue-500">
+            <div class="flex items-start justify-between">
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold mb-2">
+                  <a href="{{ .RelPermalink }}" class="text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100">
+                    {{ .Title }}
+                  </a>
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-3">
+                  {{ .Summary | truncate 120 }}
+                </p>
+                <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                  <time datetime="{{ .Date.Format "2006-01-02" }}">
+                    {{ .Date.Format "2006年1月2日" }}
+                  </time>
+                  {{ with .Params.tags }}
+                    <div class="flex space-x-2">
+                      {{ range . }}
+                        <span class="bg-blue-100 dark:bg-blue-800 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full text-xs">
+                          {{ . }}
+                        </span>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                </div>
+              </div>
+              <div class="ml-4 flex-shrink-0">
+                <span class="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
+                  置顶
+                </span>
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{ if $recent }}
+    <section class="recent-posts">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6 flex items-center">
+        🆕 最新文章
+      </h2>
+      <div class="grid gap-6">
+        {{ range $recent }}
+          <article class="recent-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
+                {{ .Title }}
+              </a>
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">
+              {{ .Summary | truncate 120 }}
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "2006年1月2日" }}
+                </time>
+                <span>阅读时间: {{ .ReadingTime }}分钟</span>
+              </div>
+              {{ with .Params.tags }}
+                <div class="flex space-x-2">
+                  {{ range first 3 . }}
+                    <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
+                      {{ . }}
+                    </span>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/posts/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300">
+          查看更多文章 →
+        </a>
+      </div>
+    </section>
+    {{ end }}
+
+    {{ if not (or $pinned $recent) }}
+    <div class="text-center py-12">
+      <p class="text-gray-500 dark:text-gray-400 text-lg">
+        还没有发布任何文章，敬请期待！
+      </p>
+    </div>
+    {{ end }}
+
+  </div>
+{{ end }}

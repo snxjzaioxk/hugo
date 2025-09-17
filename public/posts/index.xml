@@ -6,18 +6,8 @@
     <description>Recent content in Posts on Aliom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <copyright>© 2025 Aliom</copyright>
+    <copyright>© 2024 Aliom. All rights reserved.</copyright>
     <lastBuildDate>Sun, 14 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>这是一篇文章的标题</title>
-      <link>http://localhost:1313/posts/love/</link>
-      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/posts/love/</guid>
-      <description></description>
-      
-    </item>
     
     <item>
       <title>My First Post</title>
@@ -25,6 +15,16 @@
       <pubDate>Sat, 13 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>这是一篇文章的标题</title>
+      <link>http://localhost:1313/posts/love/</link>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/love/</guid>
       <description></description>
       
     </item>
