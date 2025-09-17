@@ -8,8 +8,9 @@
   --bg-light: #f8fafc;
 }
 
-/* 暗色模式变量 */
-:root[data-theme="dark"] {
+/* 暗色模式变量 - 兼容Blowfish主题 */
+:root[data-theme="dark"],
+.dark {
   --primary-blue: #60a5fa;
   --secondary-blue: #93c5fd;
   --light-blue: #1e3a8a;
@@ -27,13 +28,15 @@ body {
 }
 
 /* 亮色模式背景 */
-[data-theme="light"] body {
+[data-theme="light"] body,
+.light body {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   min-height: 100vh;
 }
 
 /* 暗色模式背景 */
-[data-theme="dark"] body {
+[data-theme="dark"] body,
+.dark body {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   min-height: 100vh;
 }
@@ -47,7 +50,8 @@ header {
   transition: all 0.3s ease;
 }
 
-[data-theme="dark"] header {
+[data-theme="dark"] header,
+.dark header {
   background: rgba(15, 23, 42, 0.95);
   border-bottom: 1px solid rgba(96, 165, 250, 0.2);
   box-shadow: 0 1px 3px rgba(96, 165, 250, 0.1);
@@ -110,19 +114,23 @@ article, .article-card {
 }
 
 [data-theme="dark"] article,
-[data-theme="dark"] .article-card {
+[data-theme="dark"] .article-card,
+.dark article,
+.dark .article-card {
   background: rgba(30, 41, 59, 0.8);
   border: 1px solid rgba(96, 165, 250, 0.1);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .recent-card {
+[data-theme="dark"] .recent-card,
+.dark .recent-card {
   background: rgba(30, 41, 59, 0.8);
   border: 1px solid rgba(96, 165, 250, 0.1);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .pinned-card {
+[data-theme="dark"] .pinned-card,
+.dark .pinned-card {
   background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(67, 56, 202, 0.3));
 }
 
@@ -133,7 +141,10 @@ article:hover, .article-card:hover, .recent-card:hover, .pinned-card:hover {
 
 [data-theme="dark"] article:hover,
 [data-theme="dark"] .article-card:hover,
-[data-theme="dark"] .recent-card:hover {
+[data-theme="dark"] .recent-card:hover,
+.dark article:hover,
+.dark .article-card:hover,
+.dark .recent-card:hover {
   box-shadow: 0 10px 25px -5px rgba(96, 165, 250, 0.2);
 }
 
@@ -202,7 +213,8 @@ pre {
   overflow-x: auto;
 }
 
-[data-theme="dark"] pre {
+[data-theme="dark"] pre,
+.dark pre {
   background: #0f172a;
   border: 1px solid rgba(96, 165, 250, 0.1);
 }
@@ -214,7 +226,8 @@ code {
   font-size: 0.875rem;
 }
 
-[data-theme="dark"] code {
+[data-theme="dark"] code,
+.dark code {
   background: rgba(30, 41, 59, 0.8);
   color: var(--accent-blue);
 }
