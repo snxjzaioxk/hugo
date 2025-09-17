@@ -1,28 +1,28 @@
 disabled = false
-languageCode = "en"
-languageName = "English"
+languageCode = "zh-cn"
+languageName = "chinese"
 weight = 1
 title = "Aliom"
 
 [params]
-  displayName = "English"
+  displayName = "中文"
   isoCode = "en"
   rtl = false
-  #dateFormat = "2 January 2006"
+  #dateFormat = "2 January 2016"
   logo = "logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
+   description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
 [params.author]
-   name = "Aliom"
-#   email = "mailto:3442803364@qq.com"
-    image = "author_image.png"
+   name = "Aliom的小窝"
+#email = "mailto:3442803364@qq.com"
+   image = "author_image.png"
 #   imageQuality = 96
 #   headline = "I'm only human"
 #   bio = "一个小博客"
-   links = [
-#     { email = "mailto:3442803364@qq.com" },
+links = [
+#      { email = "mailto:3442803364@qq.com" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
