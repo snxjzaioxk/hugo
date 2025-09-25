@@ -11,6 +11,11 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
+  name = "主页"
+  url = "/"
+  weight = 5
+
+[[main]]
   name = "博客"
   pageRef = "posts"
   weight = 10

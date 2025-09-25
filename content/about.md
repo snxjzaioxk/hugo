@@ -7,6 +7,10 @@ showReadingTime: false
 showTableOfContents: false
 showPagination: false
 showAuthor: false
+menu: false
+_build:
+  list: false
+  render: true
 ---
 
 欢迎来到我的秘密基地——**Aliom 的数字树洞** 🌳✨

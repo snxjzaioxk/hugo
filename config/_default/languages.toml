@@ -12,7 +12,7 @@ title = "Aliom"
   #dateFormat = "2 January 2006"
   logo = "logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  description = "欢迎来到我的蓝色梦境博客"
+  description = ""
   copyright = "© 2025"
 
 [zh-cn.params.author]
