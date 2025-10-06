@@ -1,3 +1,3 @@
 User-agent: *
-Allow: /
-Sitemap: https://bailanwa.dpdns.org/sitemap.xml
+Disallow: /
+Sitemap: http://localhost:9990/sitemap.xml

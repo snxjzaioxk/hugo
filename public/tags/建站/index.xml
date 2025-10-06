@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>建站 on Aliom</title>
-    <link>https://bailanwa.dpdns.org/tags/%E5%BB%BA%E7%AB%99/</link>
+    <link>http://localhost:9990/tags/%E5%BB%BA%E7%AB%99/</link>
     <description>Recent content in 建站 on Aliom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2025</copyright>
-    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://bailanwa.dpdns.org/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:9990/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>免费影视网站搭建教程 - MoonTV 开源项目</title>
-      <link>https://bailanwa.dpdns.org/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
+      <link>http://localhost:9990/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://bailanwa.dpdns.org/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://localhost:9990/posts/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</guid>
       <description></description>
       
     </item>

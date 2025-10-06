@@ -2,19 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>分类 on Aliom</title>
-    <link>https://bailanwa.dpdns.org/categories/</link>
+    <link>http://localhost:9990/categories/</link>
     <description>Recent content in 分类 on Aliom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2025</copyright>
-    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://bailanwa.dpdns.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:9990/categories/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>教程</title>
-      <link>https://bailanwa.dpdns.org/categories/%E6%95%99%E7%A8%8B/</link>
+      <title>笔记</title>
+      <link>http://localhost:9990/categories/%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:9990/categories/%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Ai文</title>
+      <link>http://localhost:9990/categories/ai%E6%96%87/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
       
-      <guid>https://bailanwa.dpdns.org/categories/%E6%95%99%E7%A8%8B/</guid>
+      <guid>http://localhost:9990/categories/ai%E6%96%87/</guid>
       <description></description>
       
     </item>
