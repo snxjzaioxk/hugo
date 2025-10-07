@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Aliom</title>
-    <link>http://localhost:9990/tags/git/</link>
+    <link>http://localhost:1313/tags/git/</link>
     <description>Recent content in Git on Aliom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2025</copyright>
-    <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:9990/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>一些命令</title>
-      <link>http://localhost:9990/posts/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/</link>
+      <link>http://localhost:1313/posts/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:9990/posts/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/</guid>
+      <guid>http://localhost:1313/posts/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Git 的核心概念</title>
-      <link>http://localhost:9990/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</link>
+      <link>http://localhost:1313/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</link>
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:9990/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</guid>
+      <guid>http://localhost:1313/posts/git-%E7%9A%84%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/</guid>
       <description></description>
       
     </item>
