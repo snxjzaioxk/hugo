@@ -1,7 +1,7 @@
 ---
 title: "国产ai在cli环境下使用"
 date: 2025-10-07
-tags: ["cc", "教程", "ai"]
+tags: ["cc", "ai"]
 weight: 50
 categories: ["教程"]
 ---

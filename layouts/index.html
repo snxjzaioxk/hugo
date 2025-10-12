@@ -1,6 +1,6 @@
 {{ define "main" }}
   {{ $pages := .Site.RegularPages.ByDate.Reverse }}
-  {{ $recent := first 5 $pages }}
+  {{ $recent := first 3 $pages }}
 
   <div class="max-w-6xl mx-auto px-4 py-8">
 
