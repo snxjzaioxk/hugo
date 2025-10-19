@@ -7,6 +7,15 @@ defaultContentLanguage = "zh-cn"
 
 # pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 
+# 保持文件夹结构一致性
+preserveTaxonomyNames = true
+uglyURLs = false
+removePathAccents = false
+
+# 禁用内容重写，保持原始路径结构
+canonifyURLs = false
+relativeURLs = false
+
 enableRobotsTXT = true
 summaryLength = 0
 
