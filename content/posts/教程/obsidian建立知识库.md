@@ -8,7 +8,6 @@ categories: ["教程"]
 
 *前言*
 前面好几次想要把本地的文档push到github上面，无奈不能直接push，~~可能是连接不稳定~~，最近看了一些软件，notion，思源，飞书，obsidian这些，都体验了一下，感觉Obsidian很对口味，不订阅的话，是本地的md编辑器，可以自己安装插件，很方便，这个界面的颜色我也是很喜欢的，就有了这篇，学习了一下ssh连接github，把本地的这些文push到远程仓库，建立自己的知识库，标题我不知道起什么好，~~既然都看到这里了，那就将就看吧~~
-
 ## 安装obsidian
 官方地址
 >https://obsidian.md/
@@ -84,6 +83,31 @@ git push
 ```
 
 刷新github，就可以看见obsidian这个文件夹消失了，仓库非常干净整洁
+## 关于报错警告
+之后提交文章可能会出现关于CRLF的报错警告，你可以不用管，因为只是一些警告
+是关于换行符（LF/CRLF）的提示，git发现有些文件是LF，windows中当前的设置的会把它们在工作区域转化成CRLF，所以给出了wainning的警告
+>在这里统一改成LF，跨平台更省心，CRLF是windows的风格
+
+**设置git（全局）**
+```
+git config --global core.autocrlf input
+git config --global core.eol lf
+
+```
+
+**强制LF结尾**
+```
+echo * text=auto eol=lf > .gitattributes
+
+```
+**push远程仓库**
+```
+git add --renormalize .
+git commit -m "Normalize line endings to LF"
+git push
+
+```
+
 *结语*
 写到最后才会使用代码块，~~前面的更改比较麻烦，就这样吧，下次一定好好使用~~
 到这里就结束了，你可以在本地愉快的写笔记，通过git来进行同步操作
