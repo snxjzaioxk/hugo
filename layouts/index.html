@@ -21,12 +21,6 @@
               {{ .Summary | truncate 150 }}
             </p>
             <div class="flex items-center justify-between mb-3">
-              <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                <time datetime="{{ .Date.Format "2006-01-02" }}">
-                  {{ .Date.Format "1月2日" }}
-                </time>
-                <span>{{ .ReadingTime }}分钟</span>
-              </div>
               <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                 {{ with .Params.categories }}
                   <span class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs mr-2">

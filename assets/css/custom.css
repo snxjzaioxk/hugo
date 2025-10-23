@@ -367,3 +367,14 @@ header {
 .dark header {
   border-bottom: none !important;
 }
+
+/* 文章目录样式调整 */
+.toc-right {
+  margin-left: 3rem !important;
+  padding-left: 2rem !important;
+}
+
+/* 确保目录内容有适当的间距 */
+.toc-right .min-w-\[220px\] {
+  padding-left: 1.5rem !important;
+}

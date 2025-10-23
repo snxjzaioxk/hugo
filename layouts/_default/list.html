@@ -40,10 +40,6 @@
                         {{ end }}
                         <div class="flex items-center justify-between">
                           <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                            <time datetime="{{ .Date.Format "2006-01-02" }}">
-                              {{ .Date.Format "1月2日" }}
-                            </time>
-                            <span>{{ .ReadingTime }}分钟阅读</span>
                             {{ with .Params.categories }}
                               <span class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs">
                                 {{ index . 0 }}
@@ -92,10 +88,6 @@
                     {{ end }}
                     <div class="flex items-center justify-between">
                       <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                        <time datetime="{{ .Date.Format "2006-01-02" }}">
-                          {{ .Date.Format "2006年1月2日" }}
-                        </time>
-                        <span>{{ .ReadingTime }}分钟阅读</span>
                         {{ with .Params.categories }}
                           <span class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs">
                             {{ index . 0 }}

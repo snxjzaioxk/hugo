@@ -42,7 +42,7 @@ layoutBackgroundBlur = false
 disableHeroImageFilter = false
 
 [article]
-showDate = true
+showDate = false
 showViews = false
 showLikes = false
 showDateOnlyInArticle = false
@@ -56,15 +56,15 @@ showDraftLabel = true
 showEdit = false
 editAppendPath = true
 seriesOpened = false
-showHeadingAnchors = true
+showHeadingAnchors = false
 showPagination = true
 invertPagination = false
-showReadingTime = true
+showReadingTime = false
 showTableOfContents = true
 showTaxonomies = true
 showCategoryOnly = false
 showAuthorsBadges = false
-showWordCount = true
+showWordCount = false
 showZenMode = false
 
 [list]
