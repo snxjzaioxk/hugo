@@ -25,50 +25,7 @@
               </h2>
               <div class="grid gap-6">
                 {{ range .Pages }}
-                  <article class="article-item bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300">
-                    <div class="flex items-start justify-between">
-                      <div class="flex-1">
-                        <h3 class="text-xl font-semibold mb-3">
-                          <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-                            {{ .Title }}
-                          </a>
-                        </h3>
-                        {{ if .Summary }}
-                          <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                            {{ .Summary | truncate 180 }}
-                          </p>
-                        {{ end }}
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                            <time class="text-sm">
-                              {{ .Date.Format "2006-01-02" }}
-                            </time>
-                            {{ with .Params.categories }}
-                              <span class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs">
-                                {{ index . 0 }}
-                              </span>
-                            {{ end }}
-                          </div>
-                          {{ with .Params.tags }}
-                            <div class="flex space-x-2">
-                              {{ range first 3 . }}
-                                <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
-                                  #{{ . }}
-                                </span>
-                              {{ end }}
-                            </div>
-                          {{ end }}
-                        </div>
-                      </div>
-                      {{ if le (.Params.weight | default 999) 10 }}
-                        <div class="ml-4 flex-shrink-0">
-                          <span class="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
-                            📌 置顶
-                          </span>
-                        </div>
-                      {{ end }}
-                    </div>
-                  </article>
+                  {{ partial "article-card-list.html" . }}
                 {{ end }}
               </div>
             </div>
@@ -76,50 +33,7 @@
         {{ else }}
           <div class="grid gap-6">
             {{ range $paginator.Pages }}
-              <article class="article-item bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300">
-                <div class="flex items-start justify-between">
-                  <div class="flex-1">
-                    <h3 class="text-xl font-semibold mb-3">
-                      <a href="{{ .RelPermalink }}" class="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400">
-                        {{ .Title }}
-                      </a>
-                    </h3>
-                    {{ if .Summary }}
-                      <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                        {{ .Summary | truncate 180 }}
-                      </p>
-                    {{ end }}
-                    <div class="flex items-center justify-between">
-                      <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                        <time class="text-sm">
-                          {{ .Date.Format "2006-01-02" }}
-                        </time>
-                        {{ with .Params.categories }}
-                          <span class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-400 px-2 py-1 rounded-full text-xs">
-                            {{ index . 0 }}
-                          </span>
-                        {{ end }}
-                      </div>
-                      {{ with .Params.tags }}
-                        <div class="flex space-x-2">
-                          {{ range first 3 . }}
-                            <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
-                              #{{ . }}
-                            </span>
-                          {{ end }}
-                        </div>
-                      {{ end }}
-                    </div>
-                  </div>
-                  {{ if le (.Params.weight | default 999) 10 }}
-                    <div class="ml-4 flex-shrink-0">
-                      <span class="bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">
-                        📌 置顶
-                      </span>
-                    </div>
-                  {{ end }}
-                </div>
-              </article>
+              {{ partial "article-card-list.html" . }}
             {{ end }}
           </div>
         {{ end }}
