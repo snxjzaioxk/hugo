@@ -40,9 +40,10 @@ cardView = false
 cardViewScreenWidth = false
 layoutBackgroundBlur = false
 disableHeroImageFilter = false
+showDate = true
 
 [article]
-showDate = false
+showDate = true
 showViews = false
 showLikes = false
 showDateOnlyInArticle = false
@@ -82,6 +83,7 @@ groupByYear = true
 cardView = false
 cardViewScreenWidth = false
 constrainItemsWidth = false
+showDate = true
 
 [sitemap]
 excludedKinds = [ "taxonomy", "term" ]
@@ -94,6 +96,7 @@ showViews = false
 showLikes = false
 showTableOfContents = false
 cardView = false
+showDate = true
 
 [term]
 showHero = false
@@ -104,3 +107,4 @@ showTableOfContents = true
 groupByYear = false
 cardView = false
 cardViewScreenWidth = false
+showDate = true
