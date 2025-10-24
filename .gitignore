@@ -3,6 +3,9 @@
 /resources/_gen/
 .hugo_build.lock
 
+# CSS编译产物（Tailwind/PostCSS）
+/assets/css/compiled/
+
 # OS generated files
 .DS_Store
 .DS_Store?

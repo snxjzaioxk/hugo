@@ -24,3 +24,8 @@
 *.ttf binary
 *.eot binary
 *.pdf binary
+
+# 从GitHub语言统计中排除（不影响Git跟踪）
+assets/css/compiled/** linguist-generated
+assets/css/schemes/** linguist-vendored
+assets/css/components/** linguist-vendored
