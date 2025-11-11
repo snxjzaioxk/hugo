@@ -6,10 +6,10 @@
 *.css text eol=lf
 *.js text eol=lf
 *.json text eol=lf
-*.md text eol=lf
-*.toml text eol=lf
-*.yaml text eol=lf
-*.yml text eol=lf
+*.md text eol=lf linguist-documentation
+*.toml text eol=lf linguist-documentation
+*.yaml text eol=lf linguist-documentation
+*.yml text eol=lf linguist-documentation
 *.go text eol=lf
 *.sh text eol=lf
 
@@ -27,7 +27,5 @@
 
 # 从GitHub语言统计中排除（不影响Git跟踪）
 assets/css/compiled/** linguist-generated
-assets/css/schemes/** linguist-vendored
-assets/css/components/** linguist-vendored
-assets/css/*.css linguist-vendored
+public/** linguist-generated
 themes/** linguist-vendored
