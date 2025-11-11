@@ -1,1 +1,1 @@
-hugo_0.151.0
+hugo_extended_0.151.0
