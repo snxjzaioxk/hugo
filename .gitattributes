@@ -29,3 +29,5 @@
 assets/css/compiled/** linguist-generated
 assets/css/schemes/** linguist-vendored
 assets/css/components/** linguist-vendored
+assets/css/*.css linguist-vendored
+themes/** linguist-vendored
