@@ -4,4 +4,13 @@ mainSections = ["posts"]
 
 [author]
   name = "Aliom"
-  homepage = "https://bailanwa.dpdns.org/"
+  homepage = "https://github.com/aliom-v"
+
+# 右上角导航链接
+[[socials]]
+  name = "GitHub"
+  link = "https://github.com/aliom-v"
+
+[[socials]]
+  name = "关于我"
+  link = "/about/"
