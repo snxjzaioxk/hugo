@@ -2,23 +2,39 @@
    Aliom Blog - 现代响应式主题
    ======================================== */
 
-/* CSS 变量 */
+/* CSS 变量 - 亮色模式 */
 :root {
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --text-primary: #111827;
   --text-secondary: #4b5563;
   --text-muted: #6b7280;
+  --bg-page: #f3f4f6;
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
   --border-color: #e5e7eb;
   --code-bg: #1f2937;
-  --max-width: 1200px;
-  --content-width: 720px;
-  --sidebar-width: 240px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --bg-page: #0f172a;
+    --bg-primary: #1e293b;
+    --bg-secondary: #334155;
+    --border-color: #475569;
+    --code-bg: #0f172a;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* 手动切换暗色模式 */
 [data-theme="dark"],
 .dark {
   --primary: #60a5fa;
@@ -26,10 +42,12 @@
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
   --text-muted: #9ca3af;
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
-  --border-color: #374151;
+  --bg-page: #0f172a;
+  --bg-primary: #1e293b;
+  --bg-secondary: #334155;
+  --border-color: #475569;
   --code-bg: #0f172a;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ========== 基础重置 ========== */
@@ -51,21 +69,22 @@ body {
   font-size: 1rem;
   line-height: 1.75;
   color: var(--text-primary);
-  background: var(--bg-secondary);
+  background: var(--bg-page);
+  min-height: 100vh;
 }
 
-/* ========== 页面容器 - 全宽居中 ========== */
+/* ========== 页面容器 - 占屏幕 80% ========== */
 .page-container {
-  width: 100%;
-  max-width: var(--max-width);
+  width: 80%;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 /* 内容区域布局 */
 .content-wrapper {
   display: grid;
-  grid-template-columns: 1fr minmax(0, var(--content-width)) var(--sidebar-width);
+  grid-template-columns: 1fr 240px;
   gap: 2rem;
   align-items: start;
   padding: 2rem 0;
@@ -73,16 +92,15 @@ body {
 
 /* 主内容区 */
 .main-content {
-  grid-column: 2;
   background: var(--bg-primary);
   border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  min-width: 0;
 }
 
 /* ========== 右侧目录侧边栏 ========== */
 .toc-sidebar {
-  grid-column: 3;
   position: sticky;
   top: 2rem;
 }
@@ -91,7 +109,7 @@ body {
   background: var(--bg-primary);
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .toc-title {
@@ -143,14 +161,12 @@ body {
 
 /* 平板端 - 隐藏右侧目录 */
 @media (max-width: 1024px) {
-  .content-wrapper {
-    grid-template-columns: 1fr;
-    max-width: var(--content-width);
-    margin: 0 auto;
+  .page-container {
+    width: 90%;
   }
 
-  .main-content {
-    grid-column: 1;
+  .content-wrapper {
+    grid-template-columns: 1fr;
   }
 
   .toc-sidebar {
@@ -165,6 +181,7 @@ body {
   }
 
   .page-container {
+    width: 100%;
     padding: 0 1rem;
   }
 
