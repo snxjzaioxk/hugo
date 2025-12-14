@@ -4,16 +4,18 @@
 
 <body>
   <article class="post {{ .Site.Language.LanguageName }}" id="article">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="site-header">
-          {{ partial "header.html" . }}
-        </div>
-        <header class="post-header">
-          <h1 class="post-title">{{ .Title }}</h1>
-          {{ if in .Site.Params.mainSections .Type }}
-          <div class="row post-desc">
-            <div class="col-xs-12 post-meta">
+    <div class="page-container">
+      <div class="site-header">
+        {{ partial "header.html" . }}
+      </div>
+
+      <div class="content-wrapper">
+        {{/* 主内容区 */}}
+        <main class="main-content">
+          <header class="post-header">
+            <h1 class="post-title">{{ .Title }}</h1>
+            {{ if in .Site.Params.mainSections .Type }}
+            <div class="post-meta">
               {{ if .Date }}
               <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                 {{ .Date.Format "2006-01-02" }}
@@ -28,26 +30,15 @@
                 {{ .WordCount }} 字
               </span>
             </div>
+            {{ end }}
+          </header>
+
+          <div class="post-content markdown-body">
+            {{ .Site.Params.postHeaderContent | safeHTML }}
+            {{ .Content }}
           </div>
-          {{ end }}
-        </header>
 
-        <div class="post-content markdown-body">
-          {{ .Site.Params.postHeaderContent | safeHTML }}
-
-          {{/* 文章目录 - 有目录内容时显示 */}}
-          {{ if .TableOfContents }}
-          <aside class="toc" id="toc">
-            <div class="toc-title">目录</div>
-            {{ .TableOfContents }}
-          </aside>
-          {{ end }}
-
-          {{ .Content }}
-        </div>
-
-        <div class="row middle-xs">
-          <div class="col-xs-12">
+          <div class="post-footer">
             {{ range .Params.tags }}
             <div class="post-tags">
               <a href="{{ site.LanguagePrefix }}/tags/{{ lower . | urlize }}/">
@@ -56,30 +47,37 @@
             </div>
             {{ end }}
           </div>
-        </div>
-        {{ if in .Site.Params.mainSections .Type }}
-          <div class="row">
-            <div class="col-xs-12">
-              {{ .Site.Params.postFooterContent | safeHTML }}
+
+          {{ if in .Site.Params.mainSections .Type }}
+            {{ .Site.Params.postFooterContent | safeHTML }}
+            {{ partial "related.html" . }}
+
+            {{ if .Site.Params.postAds }}
+            <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
+            {{ end }}
+
+            <div class="post-spacer"></div>
+
+            {{ if .Site.Params.disqus }}
+            <div class="post-comments">
+              {{ partial "disqus.html" . }}
             </div>
-          </div>
-
-          {{ partial "related.html" . }}
-
-          {{ if .Site.Params.postAds }}
-          <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
+            {{ end }}
           {{ end }}
-          <!-- split -->
-          <div class="post-spacer"></div>
-          {{ if .Site.Params.disqus }}
-          <div class="post-comments">
-            {{ partial "disqus.html" . }}
+        </main>
+
+        {{/* 右侧目录 */}}
+        {{ if .TableOfContents }}
+        <aside class="toc-sidebar" id="toc">
+          <div class="toc-wrapper">
+            <div class="toc-title">目录</div>
+            {{ .TableOfContents }}
           </div>
-          {{ end }}
+        </aside>
         {{ end }}
-
-        {{ partial "footer.html" . }}
       </div>
+
+      {{ partial "footer.html" . }}
     </div>
   </article>
 
