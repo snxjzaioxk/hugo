@@ -54,11 +54,107 @@ html {
 
 body {
   margin: 0 !important;
-  padding: 0 !important;
+  padding: 0 20px !important;
   background: var(--bg-page) !important;
   color: var(--text-primary) !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
   line-height: 1.7 !important;
+}
+
+/* ========== 首页/列表页布局 ========== */
+article.posts {
+  max-width: 1100px !important;
+  width: 80% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* 年份标题 */
+.site-date-catalog {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  margin: 2rem 0 1rem 0 !important;
+}
+
+/* 文章列表行 */
+.posts-line {
+  font-size: 1.1rem !important;
+  margin: 0.75rem 0 !important;
+  padding: 0.5rem 0 !important;
+}
+
+/* 日期 */
+.posts-date,
+.posts-date time {
+  color: var(--text-muted) !important;
+  font-size: 1rem !important;
+}
+
+/* 标题链接 */
+.posts-title a {
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.posts-title a:hover {
+  color: var(--primary) !important;
+  text-decoration: underline !important;
+}
+
+/* 分类标签 */
+.posts-category {
+  padding: 0.25rem 0.75rem !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  background: transparent !important;
+}
+
+.posts-category a,
+.posts-category strong {
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+.posts-category:hover {
+  border-color: var(--primary) !important;
+}
+
+.posts-category:hover a,
+.posts-category:hover strong {
+  color: var(--primary) !important;
+}
+
+/* 头部样式 */
+.header-title a {
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+.header-subtitle {
+  color: var(--text-muted) !important;
+}
+
+.header-item a {
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+}
+
+.header-item a:hover {
+  color: var(--primary) !important;
+}
+
+.header-line {
+  border-color: var(--primary) !important;
+}
+
+/* 分类/标签页标题 */
+.taxonomy-term {
+  color: var(--text-primary) !important;
 }
 
 /* ========== 文章页面布局 ========== */
