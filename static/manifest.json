@@ -1,0 +1,26 @@
+{
+  "name": "Aliom 的博客",
+  "short_name": "Aliom",
+  "description": "一个技术小白的成长笔记",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["blog", "technology", "education"],
+  "lang": "zh-CN"
+}

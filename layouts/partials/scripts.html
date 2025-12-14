@@ -1,0 +1,264 @@
+{{/* 阅读进度条 */}}
+<div class="reading-progress" id="reading-progress"></div>
+
+{{/* 返回顶部按钮 */}}
+<button class="back-to-top" id="back-to-top" aria-label="返回顶部">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
+
+{{/* 图片灯箱 */}}
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" aria-label="关闭">&times;</button>
+  <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+{{/* 懒加载 */}}
+{{ if and .Site.Params.lazyImage (not .IsHome) -}}
+<script src="{{ .Site.Params.staticPrefix }}{{ "js/lazyload.min.js" | relURL }}"></script>
+<script>
+  var lazyImage = new LazyLoad({
+    container: document.getElementById('article')
+  });
+</script>
+{{ end }}
+
+<script>
+  // 阅读进度条
+  function updateReadingProgress() {
+    var article = document.getElementById('article');
+    if (!article) return;
+
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    var progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+      progressBar.style.width = progress + '%';
+    }
+  }
+
+  // 返回顶部
+  var backToTop = document.getElementById('back-to-top');
+
+  function toggleBackToTop() {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }
+
+  if (backToTop) {
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // 滚动事件监听
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateReadingProgress();
+        toggleBackToTop();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // 初始化
+  document.addEventListener('DOMContentLoaded', function() {
+    updateReadingProgress();
+    toggleBackToTop();
+  });
+
+  // Disqus 广告移除
+  document.addEventListener("DOMContentLoaded", function() {
+    const disqus = document.getElementById('disqus_thread');
+    if (!disqus) {
+      return;
+    }
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        const iframes = disqus.getElementsByTagName('iframe');
+        if (iframes.length > 1) {
+          const commentsIframe = iframes[1];
+          while (disqus.firstChild) {
+            disqus.removeChild(disqus.firstChild);
+          }
+          disqus.appendChild(commentsIframe);
+          observer.disconnect();
+        }
+      });
+    });
+    observer.observe(disqus, { childList: true, subtree: true });
+  });
+
+  // 注册 Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('SW registered: ', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('SW registration failed: ', error);
+        });
+    });
+  }
+
+  // 代码复制按钮
+  document.addEventListener('DOMContentLoaded', function() {
+    var codeBlocks = document.querySelectorAll('pre');
+    codeBlocks.forEach(function(pre) {
+      // 创建容器
+      var wrapper = document.createElement('div');
+      wrapper.className = 'code-block-wrapper';
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      // 创建复制按钮
+      var copyBtn = document.createElement('button');
+      copyBtn.className = 'copy-code-btn';
+      copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+      copyBtn.title = '复制代码';
+      wrapper.appendChild(copyBtn);
+
+      copyBtn.addEventListener('click', function() {
+        var code = pre.querySelector('code') || pre;
+        var text = code.textContent;
+
+        navigator.clipboard.writeText(text).then(function() {
+          copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          copyBtn.classList.add('copied');
+          setTimeout(function() {
+            copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+    });
+  });
+
+  // 图片灯箱功能
+  (function() {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImage = document.getElementById('lightbox-image');
+    var lightboxCaption = document.getElementById('lightbox-caption');
+
+    if (!lightbox) return;
+
+    // 为文章中的图片添加点击事件
+    document.addEventListener('DOMContentLoaded', function() {
+      var article = document.getElementById('article') || document.querySelector('.post-content') || document.querySelector('article');
+      if (!article) return;
+
+      var images = article.querySelectorAll('img');
+      images.forEach(function(img) {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function() {
+          lightboxImage.src = img.src;
+          lightboxCaption.textContent = img.alt || '';
+          lightbox.classList.add('active');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    });
+
+    // 关闭灯箱
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+        closeLightbox();
+      }
+    });
+
+    // ESC 键关闭
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  })();
+
+  // TOC 目录高亮
+  (function() {
+    var toc = document.getElementById('toc');
+    if (!toc) return;
+
+    var tocLinks = toc.querySelectorAll('a');
+    var headings = [];
+
+    tocLinks.forEach(function(link) {
+      var id = link.getAttribute('href').slice(1);
+      var heading = document.getElementById(id);
+      if (heading) {
+        headings.push({ link: link, heading: heading });
+      }
+    });
+
+    if (headings.length === 0) return;
+
+    function updateTocHighlight() {
+      var scrollTop = window.scrollY + 100;
+      var current = null;
+
+      headings.forEach(function(item) {
+        if (item.heading.offsetTop <= scrollTop) {
+          current = item;
+        }
+      });
+
+      tocLinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+
+      if (current) {
+        current.link.classList.add('active');
+      }
+    }
+
+    // 防抖处理
+    var tocTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!tocTicking) {
+        window.requestAnimationFrame(function() {
+          updateTocHighlight();
+          tocTicking = false;
+        });
+        tocTicking = true;
+      }
+    });
+
+    // 平滑滚动到锚点
+    tocLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var id = link.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    updateTocHighlight();
+  })();
+</script>

@@ -1,0 +1,103 @@
+<head>
+  <meta charset="utf-8" />
+  {{ hugo.Generator }}
+
+  {{/* 基础 meta */}}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="author" content="{{ .Site.Params.author.name }}" />
+  <meta name="theme-color" content="#3b82f6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="format-detection" content="telephone=no" />
+
+  {{/* DNS 预解析 - 加速第三方资源加载 */}}
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+  {{/* 预连接 - 提前建立连接 */}}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  {{/* Canonical URL */}}
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <link rel="canonical" href="{{ .Permalink }}" />
+
+  {{/* Favicon 和图标 */}}
+  {{- if .Site.Params.favicon -}}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.Params.favicon }}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.favicon }}" />
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.favicon }}" />
+  {{- end -}}
+
+  {{/* PWA Manifest */}}
+  <link rel="manifest" href="{{ "manifest.json" | relURL }}" />
+
+  {{/* RSS */}}
+  <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }}" />
+
+  {{/* SEO 结构化数据 */}}
+  {{ partial "seo" . }}
+
+  {{/* 页面标题和描述 */}}
+  {{- if .IsHome -}}
+  <title>{{ .Site.Title }}</title>
+  <meta property="og:title" content="{{ .Site.Title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="{{ .Site.Params.description }}" />
+  <meta name="description" content="{{ .Site.Params.description }}" />
+  {{- else -}}
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <meta property="og:title" content="{{ .Title }}" />
+  <meta property="og:type" content="article" />
+  {{- $desc := default .Summary .Description | plainify | truncate 160 -}}
+  <meta property="og:description" content="{{ $desc }}" />
+  <meta name="description" content="{{ $desc }}" />
+  {{/* 文章特有 meta */}}
+  {{ with .Date }}<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />{{ end }}
+  {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}" />{{ end }}
+  {{ with .Site.Params.author.name }}<meta property="article:author" content="{{ . }}" />{{ end }}
+  {{ range .Params.tags }}<meta property="article:tag" content="{{ . }}" />{{ end }}
+  {{- end }}
+
+  {{/* Open Graph */}}
+  <meta property="og:locale" content="{{ .Site.LanguageCode }}" />
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  {{- if .Params.album -}}
+  <meta property="og:image" content="{{ .Params.album }}" />
+  {{- else -}}
+  <meta property="og:image" content="{{ .Site.BaseURL }}logo.png" />
+  {{- end }}
+
+  {{/* CSS - 内联关键样式（消除渲染阻塞） */}}
+  {{ with resources.Get "css/index.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+  {{ with resources.Get "css/flexboxgrid-6.3.1.min.css" | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+  {{ with resources.Get "css/custom.css" }}
+  {{ with . | minify }}
+  <style>{{ .Content | safeCSS }}</style>
+  {{ end }}
+  {{ end }}
+
+  {{/* Google Fonts - 异步加载 */}}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bungee+Shade&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'"
+  />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bungee+Shade&display=swap" rel="stylesheet" />
+  </noscript>
+
+  {{/* Twitter Cards */}}
+  {{ if .Site.Params.TwitterCards }}{{ template "_internal/twitter_cards.html" . }}{{ end }}
+
+  {{/* 额外 head 内容 */}}
+  {{ .Site.Params.extraHead | safeHTML }}
+</head>

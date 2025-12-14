@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ .Site.LanguageCode | default "zh-cn" }}">
 {{ partial "head.html" . }}
 
 <body>
@@ -13,12 +13,20 @@
           <h1 class="post-title">{{ .Title }}</h1>
           {{ if in .Site.Params.mainSections .Type }}
           <div class="row post-desc">
-            <div class="col-xs-12">
+            <div class="col-xs-12 post-meta">
               {{ if .Date }}
-              <time class="post-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">
-                {{ .Date.Format "02 Jan 2006" }}
+              <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Date.Format "2006-01-02" }}
               </time>
               {{ end }}
+              <span class="post-reading-time">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                {{ .ReadingTime }} 分钟阅读
+              </span>
+              <span class="post-word-count">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                {{ .WordCount }} 字
+              </span>
             </div>
           </div>
           {{ end }}
@@ -26,6 +34,15 @@
 
         <div class="post-content markdown-body">
           {{ .Site.Params.postHeaderContent | safeHTML }}
+
+          {{/* 文章目录 - 有目录内容时显示 */}}
+          {{ if .TableOfContents }}
+          <aside class="toc" id="toc">
+            <div class="toc-title">目录</div>
+            {{ .TableOfContents }}
+          </aside>
+          {{ end }}
+
           {{ .Content }}
         </div>
 
@@ -53,7 +70,7 @@
           <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
           {{ end }}
           <!-- split -->
-          <div style="height: 50px;"></div>
+          <div class="post-spacer"></div>
           {{ if .Site.Params.disqus }}
           <div class="post-comments">
             {{ partial "disqus.html" . }}

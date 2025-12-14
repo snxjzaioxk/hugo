@@ -20,9 +20,58 @@ enableEmoji = true
   category = "categories"
 
 [sitemap]
-  changefreq = 'daily'
+  changefreq = 'weekly'
   filename = 'sitemap.xml'
   priority = 0.5
 
 [outputs]
   home = ["HTML", "RSS"]
+
+# -- Minify Configuration --
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepWhitespace = false
+      keepEndTags = false
+    [minify.tdewolff.css]
+      precision = 0
+    [minify.tdewolff.js]
+      precision = 0
+
+# -- Build Configuration --
+[build]
+  writeStats = true
+
+# -- Caches Configuration --
+[caches]
+  [caches.images]
+    dir = ':resourceDir/_gen'
+    maxAge = "720h"
+  [caches.assets]
+    dir = ':resourceDir/_gen'
+    maxAge = "720h"
+
+# -- Security Configuration --
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+# -- Markup Configuration --
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    noClasses = false
+    style = "dracula"
