@@ -1,6 +1,16 @@
 # YinYang 主题配置
 description = "一个技术小白的成长笔记"
 mainSections = ["posts"]
+keywords = ["技术博客", "编程", "开发笔记", "教程", "Aliom"]
+
+# Favicon 配置
+favicon = "/logo.png"
+
+# SEO 配置
+TwitterCards = true
+
+# 性能优化
+lazyImage = true
 
 [author]
   name = "Aliom"

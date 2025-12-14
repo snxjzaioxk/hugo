@@ -23,3 +23,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Hugo stats
+hugo_stats.json
+
+# Windows artifacts
+nul
