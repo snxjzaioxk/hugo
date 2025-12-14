@@ -26,6 +26,51 @@
 {{ end }}
 
 <script>
+  // 主题切换功能（需要尽早执行以防止闪烁）
+  (function() {
+    var THEME_KEY = 'theme-preference';
+
+    // 获取保存的主题或系统偏好
+    function getPreferredTheme() {
+      var saved = localStorage.getItem(THEME_KEY);
+      if (saved) {
+        return saved;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 应用主题
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem(THEME_KEY, theme);
+    }
+
+    // 初始化主题
+    setTheme(getPreferredTheme());
+
+    // 等待 DOM 加载后绑定按钮事件
+    document.addEventListener('DOMContentLoaded', function() {
+      var toggleBtn = document.getElementById('theme-toggle');
+      if (!toggleBtn) return;
+
+      toggleBtn.addEventListener('click', function() {
+        var currentTheme = document.documentElement.getAttribute('data-theme');
+        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
+    });
+
+    // 监听系统主题变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      // 如果用户没有手动设置，则跟随系统
+      if (!localStorage.getItem(THEME_KEY)) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  })();
+</script>
+
+<script>
   // 阅读进度条
   function updateReadingProgress() {
     var article = document.getElementById('article');

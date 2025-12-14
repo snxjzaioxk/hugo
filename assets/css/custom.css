@@ -17,9 +17,23 @@
   --code-bg: #1e293b;
 }
 
-/* 暗色模式 - 跟随系统 */
+/* 暗色模式变量 */
+[data-theme="dark"] {
+  --primary: #60a5fa;
+  --primary-dark: #3b82f6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --bg-page: #0f172a;
+  --bg-card: #1e293b;
+  --bg-secondary: #334155;
+  --border-color: #475569;
+  --code-bg: #0f172a;
+}
+
+/* 跟随系统设置（当没有手动设置时） */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --primary: #60a5fa;
     --primary-dark: #3b82f6;
     --text-primary: #f1f5f9;
@@ -396,6 +410,54 @@ article.post {
 /* ========== 站点头部 ========== */
 .site-header {
   padding: 1.5rem 0 !important;
+}
+
+/* ========== 主题切换按钮 ========== */
+.theme-toggle {
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0.5rem !important;
+  border-radius: 8px !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-secondary) !important;
+  color: var(--primary) !important;
+}
+
+/* 亮色模式：显示月亮图标 */
+.theme-toggle .sun-icon {
+  display: none !important;
+}
+
+.theme-toggle .moon-icon {
+  display: block !important;
+}
+
+/* 暗色模式：显示太阳图标 */
+[data-theme="dark"] .theme-toggle .sun-icon {
+  display: block !important;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  display: none !important;
+}
+
+/* 跟随系统暗色模式时 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .sun-icon {
+    display: block !important;
+  }
+
+  :root:not([data-theme="light"]) .theme-toggle .moon-icon {
+    display: none !important;
+  }
 }
 
 /* ========== 代码复制按钮 ========== */

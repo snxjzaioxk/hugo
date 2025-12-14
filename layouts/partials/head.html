@@ -2,6 +2,15 @@
   <meta charset="utf-8" />
   {{ hugo.Generator }}
 
+  {{/* 主题初始化脚本 - 防止闪烁 */}}
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme-preference');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   {{/* 基础 meta */}}
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
