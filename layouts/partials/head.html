@@ -22,13 +22,7 @@
   <meta name="format-detection" content="telephone=no" />
 
   {{/* DNS 预解析 - 加速第三方资源加载 */}}
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-
-  {{/* 预连接 - 提前建立连接 */}}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   {{/* Canonical URL */}}
   <meta property="og:url" content="{{ .Permalink }}" />
@@ -92,17 +86,6 @@
   <style>{{ .Content | safeCSS }}</style>
   {{ end }}
   {{ end }}
-
-  {{/* Google Fonts - 异步加载 */}}
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bungee+Shade&display=swap"
-    rel="stylesheet"
-    media="print"
-    onload="this.media='all'"
-  />
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Bungee+Shade&display=swap" rel="stylesheet" />
-  </noscript>
 
   {{/* Twitter Cards */}}
   {{ if .Site.Params.TwitterCards }}{{ template "_internal/twitter_cards.html" . }}{{ end }}

@@ -1,6 +1,6 @@
 // Service Worker for Aliom's Blog
 // 版本号更新时会触发缓存刷新
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `aliom-blog-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline.html';
 

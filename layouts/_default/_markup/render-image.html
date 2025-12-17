@@ -1,0 +1,66 @@
+{{- $src := .Destination -}}
+{{- $alt := .Text | default "" -}}
+{{- $title := .Title | default "" -}}
+{{- $isExternal := or (hasPrefix $src "http://") (hasPrefix $src "https://") -}}
+
+{{- if $isExternal -}}
+  {{/* 外部图片 - 添加懒加载和基本属性 */}}
+  <img
+    src="{{ $src }}"
+    alt="{{ $alt }}"
+    {{ with $title }}title="{{ . }}"{{ end }}
+    loading="lazy"
+    decoding="async"
+    class="post-image"
+  />
+{{- else -}}
+  {{/* 本地图片 - 使用 Hugo 图片处理 */}}
+  {{- $image := .Page.Resources.GetMatch $src -}}
+  {{- if not $image -}}
+    {{- $image = resources.Get $src -}}
+  {{- end -}}
+
+  {{- if $image -}}
+    {{/* 生成 WebP 版本 */}}
+    {{- $originalWidth := $image.Width -}}
+    {{- $originalHeight := $image.Height -}}
+
+    {{/* 限制最大宽度为 1200px */}}
+    {{- $maxWidth := 1200 -}}
+    {{- if gt $originalWidth $maxWidth -}}
+      {{- $image = $image.Resize (printf "%dx webp q85" $maxWidth) -}}
+    {{- else -}}
+      {{- $image = $image.Process "webp q85" -}}
+    {{- end -}}
+
+    {{/* 原始格式备用 */}}
+    {{- $fallback := .Page.Resources.GetMatch $src -}}
+    {{- if not $fallback -}}
+      {{- $fallback = resources.Get $src -}}
+    {{- end -}}
+
+    <picture>
+      <source srcset="{{ $image.RelPermalink }}" type="image/webp">
+      <img
+        src="{{ $fallback.RelPermalink }}"
+        alt="{{ $alt }}"
+        {{ with $title }}title="{{ . }}"{{ end }}
+        width="{{ $originalWidth }}"
+        height="{{ $originalHeight }}"
+        loading="lazy"
+        decoding="async"
+        class="post-image"
+      />
+    </picture>
+  {{- else -}}
+    {{/* 找不到图片资源，使用原始路径 */}}
+    <img
+      src="{{ $src }}"
+      alt="{{ $alt }}"
+      {{ with $title }}title="{{ . }}"{{ end }}
+      loading="lazy"
+      decoding="async"
+      class="post-image"
+    />
+  {{- end -}}
+{{- end -}}

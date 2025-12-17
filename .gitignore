@@ -1,31 +1,25 @@
-# Hugo build files
+# Hugo 构建产物
 /public/
 /resources/_gen/
 .hugo_build.lock
+hugo_stats.json
 
-# CSS编译产物（Tailwind/PostCSS）
-/assets/css/compiled/
-
-# OS generated files
+# 操作系统文件
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
+ehthumbs.db
 
-# Editor files
+# 编辑器配置
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# Logs
+# 日志
 *.log
 
-# Hugo stats
-hugo_stats.json
-
-# Windows artifacts
+# Windows
 nul
+
+# Node
+node_modules/

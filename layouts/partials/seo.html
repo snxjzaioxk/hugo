@@ -1,45 +1,94 @@
+{{/* 网站结构化数据 */}}
+{{ if .IsHome }}
 <script type="application/ld+json">
-  {
-      "@context" : "https://schema.org",
-      "@type" : "BlogPosting",
-      "mainEntityOfPage": {
-           "@type": "WebPage",
-           "@id": "{{ .Permalink }}"
-      },
-      "articleSection" : "{{ .Section }}",
-      "name" : "{{ .Title }}",
-      "headline" : "{{ .Title }}",
-      {{ if .IsHome -}}
-      "description" : "{{ .Site.Params.description | plainify }}",
-      {{- else -}}
-      "description" : "{{ default .Summary .Description | plainify | truncate 160 }}",
-      {{- end }}
-      "inLanguage" : "{{ .Site.LanguageCode | default "zh-cn" }}",
-      "author" : {
-          "@type": "Person",
-          "name": "{{ .Site.Params.author.name }}"
-      },
-      "creator" : {
-          "@type": "Person",
-          "name": "{{ .Site.Params.author.name }}"
-      },
-      "publisher": {
-          "@type": "Organization",
-          "name": "{{ .Site.Title }}",
-          "logo": {
-              "@type": "ImageObject",
-              "url": "{{ .Site.BaseURL }}logo.png"
-          }
-      },
-      "accountablePerson" : "{{ .Site.Params.author.name }}",
-      "copyrightHolder" : "{{ .Site.Params.author.name }}",
-      "copyrightYear" : "{{ .Date.Format "2006" }}",
-      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-      "dateModified" : "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-      "url" : "{{ .Permalink }}",
-      "keywords" : [{{ if isset .Params "tags" }}{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}{{ end }}]
-  }
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}",
+    "description": "{{ .Site.Params.description | plainify }}",
+    "inLanguage": "{{ .Site.LanguageCode | default "zh-cn" }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ .Site.Params.author.name }}"
+    },
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ .Site.BaseURL }}?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
 </script>
+{{ else }}
+{{/* 文章页面结构化数据 */}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+    },
+    "headline": "{{ .Title }}",
+    "description": "{{ default .Summary .Description | plainify | truncate 160 }}",
+    "image": {{ if .Params.album }}"{{ .Params.album }}"{{ else }}"{{ .Site.BaseURL }}logo.png"{{ end }},
+    "author": {
+        "@type": "Person",
+        "name": "{{ .Site.Params.author.name }}",
+        "url": "{{ .Site.Params.author.homepage }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ .Site.BaseURL }}logo.png"
+        }
+    },
+    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+    "articleSection": "{{ .Section }}",
+    "inLanguage": "{{ .Site.LanguageCode | default "zh-cn" }}",
+    "wordCount": {{ .WordCount }},
+    "keywords": [{{ if isset .Params "tags" }}{{ range $i, $tag := .Params.tags }}{{ if $i }}, {{ end }}"{{ $tag }}"{{ end }}{{ end }}]
+}
+</script>
+
+{{/* 面包屑导航结构化数据 */}}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "{{ .Site.BaseURL }}"
+        }
+        {{- if .Section -}}
+        ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ .Section | title }}",
+            "item": "{{ .Site.BaseURL }}{{ .Section }}/"
+        }
+        {{- end -}}
+        ,{
+            "@type": "ListItem",
+            "position": {{ if .Section }}3{{ else }}2{{ end }},
+            "name": "{{ .Title }}",
+            "item": "{{ .Permalink }}"
+        }
+    ]
+}
+</script>
+{{ end }}
+
+{{/* 关键词 meta */}}
 {{ if .Site.Params.keywords }}
 <meta name="keywords" content="{{ delimit .Site.Params.keywords ", " }}">
+{{ end }}
+{{ with .Params.tags }}
+<meta name="keywords" content="{{ delimit . ", " }}">
 {{ end }}
